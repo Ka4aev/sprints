@@ -11,13 +11,16 @@ let createFields = (data, form) =>{
         let block = document.createElement('div');
         block.setAttribute('style', 'display: flex; flex-direction: column');
         let label = document.createElement('label');
-        label.innerHTML = item.label;
+        label.innerHTML = item.label ? item.label : '';
         block.appendChild(label);
         let input = document.createElement('input');
-        input.setAttribute('placeholder', (item.input.placeholder) ? item.input.placeholder : '');
+        input.setAttribute('placeholder', (item.input.placeholder) ? item.input.placeholder : ' ');
         input.setAttribute('type', item.input.type);
         input.setAttribute('required', item.input.required);
-        input.setAttribute('mask', item.input.mask);
+        // input.setAttribute('placeholder', item.input.mask);
+        // input.setAttribute('multiple', item.input.multiple);
+        // input.setAttribute('filetype', item.input.filetype);
+
         input.innerHTML = item.input;
         block.appendChild(input);
         form.appendChild(block);
@@ -42,5 +45,4 @@ async function showFile(input) {
     //     formCreate.appendChild(btn);
     // })
     createFields(data, formCreate);
-
 }

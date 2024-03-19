@@ -22,13 +22,13 @@
                 <form class="bg-light px-3 py-3 rounded-3 shadow-sm" id="form-file-selector">
                     <label class="form-label" for="file-selector" id="label-file-selector">Загрузить файл JSON:</label>
                     <input type="file" name="file" class="form-control" onchange="showFile(this)" id="file-selector" accept=".js" />
-                    <button style="display: none" id="clear-form" class="btn btn-primary mt-3" onclick="document.getElementById('file-selector').value=''">Очистить форму</button>
+                    <button  id="clear-form" class="btn btn-primary mt-3" onclick="document.getElementById('file-selector').value=''">Очистить форму</button>
                     <div class="invalid-feedback" id="invalid"></div>
                 </form>
             </div>
         </div>
 
-        <div id="form" class="form" style="display: none">
+        <div id="form" class="form">
             <h2 id="nameForm" class="text-center mt-3 mb-3 form__name"></h2>
             <form id="formCreate" class="py-3 p-3 border bg-light row gy-3 form__input"></form>
         </div>
