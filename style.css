@@ -1,3 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@keyframes color {
+  0% {
+    background: #9d95bc; }
+  25% {
+    background: #3097e9; }
+  50% {
+    background: #859ac9; }
+  100% {
+    background: #9d95bc; } }
+.body {
+  animation: 15s color linear infinite; }
 
 /*# sourceMappingURL=style.css.map */

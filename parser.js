@@ -1,12 +1,14 @@
 const formCreate = document.getElementById('formCreate');
 const nameForm = document.getElementById('nameForm');
-
+const FileSelector = document.getElementById('file-selector');
+;
 let fileURL;
 let data;
 
-// input.setAttribute('placeholder', if(!item.input.placeholder){ item.input.placeholder} else{ " "});
+
 let createFields = (data, form) =>{
 
+    formCreate.setAttribute('style', 'display: inherit');
     data.fields.forEach((item) => {
         let block = document.createElement('div');
         block.setAttribute('style', 'display: flex; flex-direction: column');
@@ -28,6 +30,7 @@ let createFields = (data, form) =>{
         // if (data.name === "interview"){
         //     input.setAttribute('placeholder', '');
         // }
+
     })
 
 }
@@ -44,5 +47,8 @@ async function showFile(input) {
     //     btn.innerHTML = item.text;
     //     formCreate.appendChild(btn);
     // })
+
     createFields(data, formCreate);
+
+
 }
