@@ -1,7 +1,26 @@
 @include mobile {
-  header {
-    &-top{
+  .header-top {
+    display: none;
+  }
+  .header-bottom{
+      height: 56px;
+      width: 320px;
 
+      &__logo{
+        @include font-title(18px,800,#FFF);
+      }
+      &__nav-list{
+        display: none;
+
+      }
+      &__btn{
+        display: none;
+      }
+      &__nav-circle{
+        &-lups{display: none;};
+        &-burger{display: inherit};
+      }
     }
   }
-}
+
+

@@ -81,6 +81,12 @@ html, body {
 .main {
   padding: 40px 0 80px 0; }
 
+@media (max-width: 368px) {
+  .container {
+    max-width: 300px; }
+
+  .main {
+    padding: 20px 0 80px 0; } }
 .banner {
   display: flex;
   gap: 20px; }
@@ -186,6 +192,106 @@ html, body {
       bottom: 0;
       right: 0; }
 
+@media (max-width: 368px) {
+  .banner {
+    flex-direction: column;
+    gap: 10px; }
+    .banner-equipment {
+      padding: 30px 16px 28px 30px;
+      width: 300px;
+      height: 400px;
+      background: url("/images/main/banner/network-media.svg") no-repeat, url("/images/main/banner/Ellipse-media.png") no-repeat bottom right, linear-gradient(25deg, #0d748b 0%, #1a0b73 100%) no-repeat; }
+      .banner-equipment__img1 {
+        display: flex;
+        justify-content: flex-end; }
+      .banner-equipment__img {
+        width: 146px;
+        height: 141px; }
+      .banner-equipment__inner {
+        flex-direction: column;
+        align-items: normal; }
+      .banner-equipment__title {
+        font-size: 22px;
+        font-weight: 800;
+        color: #FFF;
+        text-transform: uppercase;
+        width: 199px; }
+      .banner-equipment__text {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        margin-top: 10px; }
+      .banner-equipment__btn {
+        display: inline-flex;
+        padding: 14px 26px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        color: #18154b;
+        font-weight: 700;
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        margin-top: 18px; }
+        .banner-equipment__btn:disabled {
+          background: rgba(255, 255, 255, 0.6); }
+        .banner-equipment__btn:hover {
+          box-shadow: 0 4px 30px 0 rgba(255, 255, 255, 0.4);
+          background: #fff; }
+        .banner-equipment__btn:active {
+          background: linear-gradient(0deg, rgba(24, 21, 75, 0.15) 0%, rgba(24, 21, 75, 0.15) 100%), #FFF; }
+      .banner-equipment__slider {
+        display: flex;
+        position: absolute;
+        top: 370px;
+        right: 118px;
+        gap: 10px; }
+    .banner-offer {
+      display: flex;
+      border-radius: 10px;
+      padding: 30px 30px 20px 30px;
+      width: 300px;
+      height: 246px;
+      box-shadow: 0 4px 20px 0 rgba(0, 7, 94, 0.1);
+      background: url("/images/main/banner/bitcoin.png") no-repeat right top 40px, url("/images/main/banner/background-ellipse.png") no-repeat right bottom, radial-gradient(171.82% 119.39% at -6.32% -2.5%, #42e8e0 0%, #40ddda 0%, #3aaec0 9.2072576284%, #3484a9 17.2999992967%, #2f6195 25.7299989462%, #2b4486 34.580001235%, #282e79 43.9999997616%, #261e71 54.2500019073%, #24156c 65.9399986267%, #24126a 82.2600007057%) no-repeat, #1a0b73;
+      background-size: 136px 126px, auto; }
+      .banner-offer__inner {
+        position: relative;
+        width: 100%;
+        min-height: 100%; }
+      .banner-offer__title {
+        font-size: 20px;
+        font-weight: 800;
+        color: #FFF;
+        text-transform: uppercase;
+        width: 166px; }
+      .banner-offer__discount {
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+        gap: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.25; }
+        .banner-offer__discount-number {
+          font-size: 37px;
+          font-weight: 700;
+          color: #FFF;
+          text-transform: uppercase; }
+      .banner-offer__trans {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        align-self: flex-end;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        gap: 8px;
+        position: absolute;
+        bottom: 0;
+        right: 0; } }
 .category {
   margin: 80px 0 80px 0; }
   .category-title {
@@ -692,6 +798,8 @@ html, body {
       border-radius: 30px;
       background: #F0F5FB;
       position: relative; }
+      .header-bottom__nav-circle-burger {
+        display: none; }
     .header-bottom__nav-item {
       transition: all 0.2s ease-in-out; }
       .header-bottom__nav-item:hover {
@@ -712,6 +820,26 @@ html, body {
       color: #303239;
       gap: 40px; }
 
+@media (max-width: 368px) {
+  .header-top {
+    display: none; }
+
+  .header-bottom {
+    height: 56px;
+    width: 320px; }
+    .header-bottom__logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase; }
+    .header-bottom__nav-list {
+      display: none; }
+    .header-bottom__btn {
+      display: none; }
+    .header-bottom__nav-circle-lups {
+      display: none; }
+    .header-bottom__nav-circle-burger {
+      display: inherit; } }
 .footer {
   width: 100%;
   height: 336px;
