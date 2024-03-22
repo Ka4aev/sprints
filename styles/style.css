@@ -341,6 +341,47 @@ html, body {
       font-weight: 700;
       color: #18154b; }
 
+@media (max-width: 368px) {
+  .category {
+    margin: 60px 0 60px 0; }
+    .category-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #18154b;
+      text-transform: uppercase;
+      margin-bottom: 30px; }
+    .category-showcase {
+      display: grid;
+      grid-template: repeat(6, 1fr)/repeat(1, 1fr);
+      gap: 10px; }
+      .category-showcase__cargo {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        padding: 20px 20px 20px 20px;
+        border-radius: 10px;
+        width: 300px;
+        height: 140px;
+        box-shadow: 0 4px 20px 0 rgba(0, 7, 94, 0.1);
+        background: url("/images/main/category/showcase-ellipse-mobile.png") no-repeat, #fff; }
+      .category-showcase__img {
+        width: 110px;
+        height: 102px; }
+      .category-showcase__text {
+        font-size: 16px;
+        font-weight: 400;
+        color: #303239; }
+    .category__trans {
+      gap: 8px; }
+      .category__trans:hover {
+        gap: 18px; }
+      .category__trans:active {
+        gap: 18px; }
+    .category__link {
+      font-size: 14px;
+      font-weight: 600;
+      color: #18154b; } }
 .advantages {
   border-radius: 10px;
   width: 100%;

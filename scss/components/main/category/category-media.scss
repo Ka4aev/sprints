@@ -1,0 +1,46 @@
+@include mobile {
+  .category {
+    margin: 60px 0 60px 0;
+    &-title {
+      @include font-title(22px, 800, #18154b);
+      margin-bottom: 30px;
+    }
+
+    &-showcase {
+      display: grid;
+      grid-template: repeat(6, 1fr)/ repeat(1, 1fr);
+      gap: 10px;
+
+      &__cargo {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        padding: 20px 20px 20px 20px;
+        border-radius: 10px;
+        width: 300px;
+        height: 140px;
+        box-shadow: 0 4px 20px 0 rgba(0, 7, 94, 0.1);
+        background: url("/images/main/category/showcase-ellipse-mobile.png") no-repeat, #fff;
+      }
+      &__img{
+        width: 110px;
+        height: 102px;
+      }
+      &__text{@include font-text(16px,400,#303239);}
+    }
+    &__trans{
+      gap: 8px;
+      &:hover{
+        gap: 18px;
+      }
+      &:active{
+        gap: 18px;
+      }
+    }
+
+    &__link{
+      @include font-text(14px, 600, #18154b)
+    }
+  }
+}
