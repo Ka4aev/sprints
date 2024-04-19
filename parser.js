@@ -20,25 +20,36 @@ let createFields = (data, form) =>{
         block.appendChild(label);
         let input = document.createElement('input');
 
+        let select = document.createElement('select');
+        select.setAttribute('multiple', 'multiple')
+
+        let technologies = item.input.technologies ?? null;
+        technologies ? (technologies.forEach((item) =>{
+            let option = document.createElement('option');
+            select.appendChild(option);
+            option.innerHTML = item;
+            console.log(item);
+        })) : '';
+
+
         for (const [attr, attrValue] of Object.entries(item.input)) {
-            console.log(attr, attrValue, '\n\n');
             input.setAttribute(attr, attrValue);
+            console.log(attr, attrValue, '\n\n');
+
+            let placeholder = item.input.placeholder ?? item.input.mask ?? null;
+            placeholder ? input.setAttribute('placeholder', placeholder) : null;
+
+            let filetype = item.input.filetype ?? null;
+            filetype ? input.setAttribute('accept', filetype.map(item => '.' + item).join(',')) : null;
+
+            let technology = item.input.type === "technology";
+            !technology ? input.setAttribute('type', item.input.type) : null;
+
+            !technology ? block.appendChild(input) : block.appendChild(select);
         }
-        // let placeholder = item.input.placeholder ?? item.input.mask ?? null;
-        // placeholder ? input.setAttribute('placeholder', placeholder) : null;
-        // input.setAttribute('type', item.input.type);
-        // input.setAttribute('required', item.input.required);
-        // let filetype = item.input.filetype ?? null;
-        // filetype ? input.setAttribute('accept', filetype.map(item => '.' + item).join(',')) : null;
-
-
-        // input.setAttribute('multiple', item.input.multiple);
-
 
         input.innerHTML = item.input;
-        block.appendChild(input);
         form.appendChild(block);
-
     })
 
 }
