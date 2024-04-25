@@ -8,7 +8,7 @@ let data;
 
 let createFields = (data, form) =>{
 
-    formCreate.setAttribute('style', 'display: inherit');
+    formCreate.setAttribute('style', 'display: inherit; margin-bottom: 30px;');
     data.fields.forEach((item) => {
 
         let block = document.createElement('div');
