@@ -12,41 +12,56 @@ let createFields = (data, form) =>{
     data.fields.forEach((item) => {
 
         let block = document.createElement('div');
-
-
         block.setAttribute('style', 'display: flex; flex-direction: column');
+
         let label = document.createElement('label');
         label.innerHTML = item.label ?? null;
         block.appendChild(label);
+
         let input = document.createElement('input');
 
-        let select = document.createElement('select');
-        select.setAttribute('multiple', 'multiple')
 
-        let technologies = item.input.technologies ?? null;
-        technologies ? (technologies.forEach((item) =>{
-            let option = document.createElement('option');
-            select.appendChild(option);
-            option.innerHTML = item;
-            console.log(item);
-        })) : '';
+        let technology = item.input.type === "technology";
+        let technologyFunc = () =>{
+            let select = document.createElement('select');
+            select.setAttribute('multiple', 'multiple')
 
-        let colors = item.input.colors ?? null;
-        let blockcolor = document.createElement('form');
-        blockcolor.setAttribute('style', 'display: flex; flex-direction: column; height: fit-content; gap:15px;');
-        colors ? (colors.forEach((item) =>{
-            let colorblock = document.createElement('div');
-            colorblock.setAttribute('width','100%');
-            colorblock.setAttribute('style', `background-color: ${item}; height: 100px;`);
-            blockcolor.appendChild(colorblock);
-            let input = document.createElement('input');
-            input.setAttribute('type', 'radio');
-            input.setAttribute('name', 'color;');
-            blockcolor.appendChild(input);
-            console.log(item);
-        })) : '';
+            let technologies = item.input.technologies ?? null;
+            technologies ? (technologies.forEach((item) =>{
+                let option = document.createElement('option');
+                select.appendChild(option);
+                option.innerHTML = item;
+                console.log(item);
+            })) : '';
+            block.appendChild(select);
+        }
 
 
+        let color = item.input.type === "color";
+        let colorsFunc = () =>{
+            let colors = item.input.colors ?? null;
+            let blockcolor = document.createElement('form');
+            blockcolor.setAttribute('style', 'display: flex; flex-direction: column; height: fit-content; gap:15px;');
+            colors ? (colors.forEach((item) =>{
+                let colorblock = document.createElement('div');
+                colorblock.setAttribute('width','100%');
+                colorblock.setAttribute('style', `background-color: ${item}; height: 100px;`);
+                blockcolor.appendChild(colorblock);
+                let input = document.createElement('input');
+                input.setAttribute('type', 'radio');
+                input.setAttribute('name', 'color;');
+                blockcolor.appendChild(input);
+                console.log(item);
+            })) : '';
+
+            block.appendChild(blockcolor);
+        }
+
+        let deffault = () =>{
+            if (color || technology) return;
+            input.setAttribute('type', item.input.type)
+            block.appendChild(input);
+        }
 
         for (const [attr, attrValue] of Object.entries(item.input)) {
             input.setAttribute(attr, attrValue);
@@ -58,15 +73,11 @@ let createFields = (data, form) =>{
             let placeholder = item.input.placeholder ?? item.input.mask ?? null;
             placeholder ? input.setAttribute('placeholder', placeholder) : null;
 
-            let technology = item.input.type === "technology";
-
-            !technology ? input.setAttribute('type', item.input.type) :  null;
-            !technology ? block.appendChild(input) : block.appendChild(select);
-
-            let color = item.input.type === "color";
-            !color ? input.setAttribute('type', item.input.type) : null;
-            !color ? block.appendChild(input) : block.appendChild(blockcolor);
-
+            switch (attr){
+                case 'technologies': technologyFunc();break;
+                case 'colors': colorsFunc();break;
+                default: deffault();
+            }
         }
 
 
