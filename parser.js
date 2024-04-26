@@ -10,7 +10,6 @@ let createFields = (data, form) =>{
 
     formCreate.setAttribute('style', 'display: inherit; margin-bottom: 30px;');
     data.fields.forEach((item) => {
-
         let block = document.createElement('div');
         block.setAttribute('style', 'display: flex; flex-direction: column');
 
@@ -19,12 +18,14 @@ let createFields = (data, form) =>{
         block.appendChild(label);
 
         let input = document.createElement('input');
-
-
+        input.setAttribute('class', 'form-control ');
+        item.input.type === "checkbox" ?  input.setAttribute('class', 'form-check-input ') : input.setAttribute('class', 'form-control ');
         let technology = item.input.type === "technology";
         let technologyFunc = () =>{
             let select = document.createElement('select');
-            select.setAttribute('multiple', 'multiple')
+            select.setAttribute('multiple', 'multiple');
+            select.setAttribute('class', 'form-select');
+            select.setAttribute('size', '8');
 
             let technologies = item.input.technologies ?? null;
             technologies ? (technologies.forEach((item) =>{
@@ -41,19 +42,20 @@ let createFields = (data, form) =>{
         let colorsFunc = () =>{
             let colors = item.input.colors ?? null;
             let blockcolor = document.createElement('form');
-            blockcolor.setAttribute('style', 'display: flex; flex-direction: column; height: fit-content; gap:15px;');
+            blockcolor.setAttribute('style', 'display: flex; flex-direction: column; height: fit-content; gap:15px;margin:20px auto;align-items:center;');
             colors ? (colors.forEach((item) =>{
                 let colorblock = document.createElement('div');
                 colorblock.setAttribute('width','100%');
-                colorblock.setAttribute('style', `background-color: ${item}; height: 100px;`);
+                colorblock.setAttribute('style', `background-color: ${item}; height: 100px; width:300px;`);
                 blockcolor.appendChild(colorblock);
                 let input = document.createElement('input');
                 input.setAttribute('type', 'radio');
                 input.setAttribute('name', 'color;');
+                input.setAttribute('class', 'form-check-input');
                 blockcolor.appendChild(input);
                 console.log(item);
             })) : '';
-ссссстастлох
+
             block.appendChild(blockcolor);
         }
 
@@ -84,7 +86,54 @@ let createFields = (data, form) =>{
         input.innerHTML = item.input;
         form.appendChild(block);
     })
+    data.references.forEach((item)=>{
+        let block = document.createElement('div');
+        block.setAttribute('style', 'display: flex; flex-direction: column');
 
+        let input = document.createElement('input');
+
+        let textblock = document.createElement('span');
+        textblock.setAttribute('style', 'display: flex;gap:5px;margin:0 auto;');
+
+        let textWithoutRef = () =>{
+            let textwithout = document.createElement('p');
+            textwithout.innerHTML = item['text without ref'] ?? null;
+            textblock.appendChild(textwithout);
+        }
+        let href = item.ref;
+        let textDefault = () =>{
+            let textDef = document.createElement('a');
+            textDef.setAttribute('href',href);
+            textDef.setAttribute('target','_blank');
+            textDef.setAttribute('class','link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover');
+            textDef.innerHTML = item.text ?? null;
+            textblock.appendChild(textDef);
+        }
+        block.appendChild(textblock);
+        let inputFunc = () =>{
+            for (const [attr, attrValue] of Object.entries(item.input)) {
+                input.setAttribute(attr, attrValue);
+                item.input.type === "checkbox" ?  input.setAttribute('class', 'form-check-input ') : input.setAttribute('class', 'form-control ');
+                input.setAttribute('style', 'margin: 0 auto');
+                block.appendChild(input);
+            }
+        }
+        for (const [attr, attrValue] of Object.entries(item)) {
+            switch (attr){
+                case 'input': inputFunc(); break;
+                case 'text without ref': textWithoutRef();break;
+                case 'text': textDefault();break;
+            }
+        }
+        input.innerHTML = item.input;
+        form.appendChild(block);
+    })
+    data.buttons.forEach((item)=>{
+        let btn = document.createElement('button')
+        btn.innerHTML = item.text;
+        item.text === "Cancel" ? btn.setAttribute('class', 'btn btn-danger') : btn.setAttribute('class', 'btn btn-secondary');
+        form.appendChild(btn);
+    })
 }
 async function showFile(input) {
     let file = input.files[0];

@@ -19,7 +19,7 @@
         <div class="row py-3">
             <div class="col">
                 <h1 class="text-light text-center">JSON Форма</h1>
-                <form class="bg-light px-3 py-3 rounded-3 shadow-sm" id="form-file-selector">
+                <form autocomplete="on" class="bg-light px-3 py-3 rounded-3 shadow-sm" id="form-file-selector">
                     <label class="form-label" for="file-selector" id="label-file-selector">Загрузить файл JSON:</label>
                     <input type="file" name="file" class="form-control" onchange="showFile(this)" id="file-selector" accept=".js" />
                     <button  id="clear-form" class="btn btn-primary mt-3" onclick="document.getElementById('file-selector').value=''">Очистить форму</button>
