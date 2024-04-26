@@ -53,7 +53,7 @@ let createFields = (data, form) =>{
                 blockcolor.appendChild(input);
                 console.log(item);
             })) : '';
-
+ссссстастлох
             block.appendChild(blockcolor);
         }
 
