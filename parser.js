@@ -13,9 +13,11 @@ const clearForm = () => {
 }
 //  todo разделить fields
 // todo сделать чекбокс
-let createFields = (data, form) =>{
+let createFile = (data, form) =>{
 
     formCreate.setAttribute('style', 'display: inherit; margin-bottom: 30px;');
+
+    let createFields = () => {
     data.fields.forEach((item) => {
         let block = document.createElement('div');
         block.setAttribute('style', 'display: flex; flex-direction: column');
@@ -94,7 +96,9 @@ let createFields = (data, form) =>{
 
         input.innerHTML = item.input;
         form.appendChild(block);
-    })
+     })
+    }
+    data.fields ? createFields() : null;
 
     let createReferences =() => {
         data.references.forEach((item) => {
@@ -168,5 +172,5 @@ async function showFile(input) {
     nameForm.innerHTML = data.name;
 
 
-    createFields(data, formCreate);
+    createFile(data, formCreate);
 }
