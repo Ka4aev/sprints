@@ -92,8 +92,6 @@ let createFields = (data,form) => {
             }
         }
 
-
-        input.innerHTML = item.input;
         form.appendChild(block);
     })
 }
@@ -149,7 +147,6 @@ let createReferences =(data,form) => {
                     break;
             }
         }
-        input.innerHTML = item.input;
         form.appendChild(block);
 
     })
