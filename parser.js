@@ -24,9 +24,11 @@ let createFields = (data,form) => {
 
         let input = document.createElement('input');
         input.setAttribute('class', 'form-control ');
-        item.input.type === "checkbox"
-            ?  input.setAttribute('class', 'form-check-input ')
-            : input.setAttribute('class', 'form-control ');
+        if (item.input.type === "checkbox") {
+            input.setAttribute('class', 'form-check-input ');
+            block.setAttribute('style', 'display: flex; flex-direction: row-reverse; gap: 10px; justify-content: flex-end;');
+        } else input.setAttribute('class', 'form-control ');
+
 
         let technology = item.input.type === "technology";
         let technologies = item.input.technologies ?? null;
@@ -96,18 +98,30 @@ let createFields = (data,form) => {
     })
 }
 let createReferences =(data,form) => {
+    let wrapper = document.createElement('div');
+    wrapper.setAttribute('style', 'display: flex; gap: 10px; justify-content: center;');
+
     data.references.forEach((item) => {
         let block = document.createElement('div');
-        block.setAttribute('style', 'display: flex; flex-direction: column');
+        block.setAttribute('style', 'display: flex;');
 
         // let blockinput = document.createElement('div');
         // blockinput.setAttribute('style', 'display: flex;');
 
         let input = document.createElement('input');
 
+        let inputFunc = () => {
+            for (const [attr, attrValue] of Object.entries(item.input)) {
+                input.setAttribute(attr, attrValue);
+                item.input.type === "checkbox" ? input.setAttribute('class', 'form-check-input ') : input.setAttribute('class', 'form-control ');
+                block.appendChild(input);
+            }
+        }
 
         let textblock = document.createElement('span');
+
         textblock.setAttribute('style', 'display: flex;gap:5px;margin:0 auto;');
+
 
         let textWithoutRef = () => {
             let textwithout = document.createElement('p');
@@ -125,15 +139,8 @@ let createReferences =(data,form) => {
         }
 
         block.appendChild(textblock);
-        let inputFunc = () => {
 
-            for (const [attr, attrValue] of Object.entries(item.input)) {
-                input.setAttribute(attr, attrValue);
-                item.input.type === "checkbox" ? input.setAttribute('class', 'form-check-input ') : input.setAttribute('class', 'form-control ');
-                input.setAttribute('style', 'margin: 0 auto');
-                block.appendChild(input);
-            }
-        }
+
         for (const [attr] of Object.entries(item)) {
             switch (attr) {
                 case 'input':
@@ -147,9 +154,9 @@ let createReferences =(data,form) => {
                     break;
             }
         }
-        form.appendChild(block);
-
+        wrapper.appendChild(block);
     })
+    form.appendChild(wrapper)
 }
 let createButtons = (data,form) => {
 
