@@ -8,17 +8,18 @@ import TheButton from "@/components/header/TheButton.vue";
     <div class="container">
       <div class="header-inner">
         <the-logo />
-        <the-button>Обновить пашу</the-button>
+        <the-button>Обновить</the-button>
       </div>
     </div>
   </header>
 </template>
 
 <style lang="scss">
+@import './../../assets/scss/index.scss';
   .header{
-    padding: 15px 0;
-    background-color: #f45d00;
-    font-family: "Nunito", sans-serif;
+    padding: 10px 0;
+    background-color: $orange-color;
+    font-family: $default-font;
   }
   .header-inner{
     display: flex;

@@ -6,7 +6,8 @@
   <button class="header-button"> <slot/></button>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import './../../assets/scss/index.scss';
   .header-button{
     display: flex;
     align-items: center;
@@ -14,7 +15,7 @@
     padding: 8px 12px;
     background: #fff;
     border-radius: 5px;
-    color: #f45d00;
+    color: $orange-color;
     font-size: 15px;
     font-weight: 600;
 
@@ -22,5 +23,8 @@
   }
   .header-button:hover{
     box-shadow: white 1px 1px 60px 1px;
+  }
+  .header-button:active{
+    transform: scale(0.95);
   }
 </style>
