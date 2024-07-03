@@ -1,34 +1,72 @@
 <script setup>
 
+const newsItem = {
+    by : "dhouston",
+    descendants : 71,
+    id : 8863,
+    kids : [ 8952, 9224, 8917, 8884, 8887, 8943, 8869, 8958, 9005, 9671, 8940, 9067, 8908, 9055, 8865, 8881, 8872, 8873, 8955, 10403, 8903, 8928, 9125, 8998, 8901, 8902, 8907, 8894, 8878, 8870, 8980, 8934, 8876 ],
+    score : 111,
+    time : 1175714200,
+    title: "My YC app: Dropbox - Throw away your USB drive",
+    type : "story",
+    url : "http://www.getdropbox.com/u/2/screencast.html",
+}
+const newsTime = (time) => {
+  let date = new Date(time * 1000)
+  let hours = date.getHours()
+  let minutes = date.getMinutes()
+  let seconds = date.getSeconds()
+  if (hours > 0) {
+    return `${hours} hours`
+  }
+  else if (minutes > 0) {
+    return `${minutes} minutes`
+  }
+  else {
+    return `${seconds} seconds`
+  }
+}
+
+// export function generateNewsItems(){
+//   const newsItems = []
+//
+//   for(let novelty  = 0; novelty < 100; novelty++) {
+//     newsItems.push({ novelty })
+//   }
+//   return newsItems;
+// }
 </script>
 
 <template>
-  <article class="novelty">
+  <article
+           :id=newsItem.id
+           class="novelty"
+  >
     <span class="number">1.</span>
     <div class="novelty-top">
               <span class="novelty-title">
-                 <a href="/">My Python code is a neural network</a>
+                 <a href="/">{{newsItem.title}}</a>
               </span>
       <span class="novelty-link">
                (
-                 <a   href="/">gabornyeki.com</a>
+                 <a href="/">{{newsItem.url}}</a>
                )
              </span>
     </div>
 
     <div class="novelty-bottom">
 
-      <span class="score">77 points</span>
+      <span class="score">{{newsItem.score}} points</span>
       by
-      <a class="author" href="/">gnyeki</a>
+      <a class="author" href="/">{{newsItem.by}}</a>
 
       <span class="age">
-                <a href="/">1 hour ago</a>
+                <a href="/">{{newsTime(newsItem.time)}} ago</a>
               </span>
       |
       <a class="hide" href="/">hide</a>
       |
-      <a class="comments" href="/">7&nbsp;comments</a>
+      <a class="comments" href="/">{{newsItem.descendants}}&nbsp;comments</a>
     </div>
   </article>
 </template>

@@ -1,11 +1,15 @@
 <script setup>
-
 import NewsItem from "@/components/news/newsItem.vue";
+
 </script>
 
 <template>
   <section class="news">
-   <news-item/>
+   <news-item
+    v-for="newsItem in 100"
+    :key="newsItem.id"
+    :news-item="newsItem"
+   />
   </section>
 </template>
 
