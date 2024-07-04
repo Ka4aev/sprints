@@ -1,4 +1,10 @@
 <script setup>
+defineProps({
+  number:{
+    type: Number,
+    required: true
+  }
+});
 
 const newsItem = {
     by : "dhouston",
@@ -11,6 +17,7 @@ const newsItem = {
     type : "story",
     url : "http://www.getdropbox.com/u/2/screencast.html",
 }
+
 const newsTime = (time) => {
   let date = new Date(time * 1000)
   let hours = date.getHours()
@@ -27,29 +34,22 @@ const newsTime = (time) => {
   }
 }
 
-// export function generateNewsItems(){
-//   const newsItems = []
-//
-//   for(let novelty  = 0; novelty < 100; novelty++) {
-//     newsItems.push({ novelty })
-//   }
-//   return newsItems;
-// }
+
 </script>
 
 <template>
   <article
-           :id=newsItem.id
-           class="novelty"
+      :id=newsItem.id
+      class="novelty"
   >
-    <span class="number">1.</span>
+    <span class="number">{{number}}.</span>
     <div class="novelty-top">
               <span class="novelty-title">
                  <a href="/">{{newsItem.title}}</a>
               </span>
       <span class="novelty-link">
                (
-                 <a href="/">{{newsItem.url}}</a>
+                 <a :href=newsItem.url target="_blank">{{newsItem.url}}</a>
                )
              </span>
     </div>
@@ -75,7 +75,10 @@ const newsTime = (time) => {
 .number{
   position: absolute;
   @extend .font-title;
-  left: -1em;
+  left: -2.2em;
+  top: 2px;
+  width: 30px;
+  text-align: center;
   color: #a84b26;
 }
 
