@@ -13,7 +13,8 @@ const newsItems = generateNewsItems();
     <main class="main">
       <div class="container">
         <news-items
-        :news-items="newsItems"/>
+          :news-items="newsItems"
+        />
       </div>
     </main>
   </div>
