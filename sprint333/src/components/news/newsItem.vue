@@ -19,7 +19,6 @@ const newsItem = {
 }
 const shortLink = (link) => link.split('/')[2];
 
-shortLink(newsItem.url)
 const newsTime = (time) => {
   let date = new Date(time * 1000)
   let hours = date.getHours()
@@ -43,7 +42,7 @@ const newsTime = (time) => {
     <div class="novelty-top">
 
       <span class="novelty-title">
-        <a href="/">{{newsItem.title}}</a>
+        <router-link to="/post">{{newsItem.title}}</router-link>
       </span>
 
       <span class="novelty-link">
@@ -58,12 +57,10 @@ const newsTime = (time) => {
       <a class="author" href="/">{{newsItem.by}}</a>
 
       <span class="age">
-                <a href="/">{{newsTime(newsItem.time)}} ago</a>
-              </span>
+        {{newsTime(newsItem.time)}} ago
+      </span>
       |
-      <a class="hide" href="/">hide</a>
-      |
-      <a class="comments" href="/">{{newsItem.descendants}}&nbsp;comments</a>
+       <router-link to="/post" class="comments" href="/"> {{newsItem.descendants}} comments</router-link>
     </div>
   </article>
 </template>

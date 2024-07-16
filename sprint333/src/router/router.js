@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-    //роуты
+    { name: 'home', path: '/', component: () => import('@/views/HomeView.vue')},
+    { name: 'posts', path: '/post', component: () => import('@/views/PostView.vue')}
 ]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 })
 
 export default router

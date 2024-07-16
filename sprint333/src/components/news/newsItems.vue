@@ -3,7 +3,7 @@ import NewsItem from "@/components/news/newsItem.vue";
 defineProps({
   newsItems: {
     type: Array,
-    required: true,
+    required: true
   }
 });
 </script>
@@ -20,13 +20,5 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-.news{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  width: 100%;
-  height: 100%;
-  padding: 2% 4%;
-  background-color: $background-color;
-}
+
 </style>

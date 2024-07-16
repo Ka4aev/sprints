@@ -10,3 +10,14 @@
   color:$title-color;
   font-family: "Montserrat", sans-serif;
 }
+
+.news{
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+  padding: 2% 4%;
+  background-color: $background-color;
+}

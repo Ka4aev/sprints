@@ -7,7 +7,7 @@ import TheButton from "@/components/header/TheButton.vue";
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <the-logo />
+        <router-link to="/"><the-logo /></router-link>
         <the-button>Обновить</the-button>
       </div>
     </div>
@@ -16,6 +16,7 @@ import TheButton from "@/components/header/TheButton.vue";
 
 <style lang="scss">
   .header{
+    margin-bottom: 20px;
     padding: 10px 0;
     background-color: $orange-color;
     font-family: $default-font;
