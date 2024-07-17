@@ -1,4 +1,6 @@
 <script setup>
+import {NewsServices} from "@/api/NewsServices.js";
+
 defineProps({
   number:{
     type: Number,
@@ -17,6 +19,7 @@ const newsItem = {
     type: "story",
     url: "http://www.getdropbox.com/u/2/screencast.html"
 }
+
 const shortLink = (link) => link.split('/')[2];
 
 const newsTime = (time) => {
@@ -42,7 +45,11 @@ const newsTime = (time) => {
     <div class="novelty-top">
 
       <span class="novelty-title">
-        <router-link to="/post">{{newsItem.title}}</router-link>
+        <router-link
+            :to="{ name: 'posts', params: { id: newsItem.id} }"
+        >
+          {{newsItem.title}}
+        </router-link>
       </span>
 
       <span class="novelty-link">
@@ -60,7 +67,14 @@ const newsTime = (time) => {
         {{newsTime(newsItem.time)}} ago
       </span>
       |
-       <router-link to="/post" class="comments" href="/"> {{newsItem.descendants}} comments</router-link>
+       <router-link
+           :to="{ name: 'posts', params: { id: newsItem.id} }"
+           class="comments" href="/"
+       >
+         {{newsItem.descendants}}
+         <span v-if="newsItem.descendants === 1">comment</span>
+         <span v-else>comments</span>
+       </router-link>
     </div>
   </article>
 </template>
@@ -73,7 +87,7 @@ const newsTime = (time) => {
   top: 2px;
   width: 30px;
   text-align: center;
-  color: #a84b26;
+  color: $number-color;
 }
 
 .novelty{
@@ -83,20 +97,22 @@ const newsTime = (time) => {
   width: fit-content;
   gap: 3px;
   @extend .font-text;
+
   &-title{
     @extend .font-title;
     margin-right: 5px;
   }
+
   a:hover{
     text-decoration: underline;
   }
+
   &-bottom{
     color: white;
     display: flex;
     font-size: 1.2em;
     font-weight: bold;
     padding: 5px;
-
     background-color: rgba(224, 112, 30, 0.7);
     width: 100%;
     gap: 5px;

@@ -5,7 +5,7 @@
 <template>
   <div class="container">
     <section class="news">
-      <div>паша жоский</div>
+      <div>паша жоский </div>
     </section>
 
   </div>
