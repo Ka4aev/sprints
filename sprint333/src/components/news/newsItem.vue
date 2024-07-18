@@ -1,5 +1,6 @@
 <script setup>
-import {NewsServices} from "@/api/NewsServices.js";
+
+import {post} from "../../api/NewsServices.js";
 
 defineProps({
   number:{
@@ -43,7 +44,6 @@ const newsTime = (time) => {
   <article :id=newsItem.id class="novelty">
     <span class="number">{{number}}.</span>
     <div class="novelty-top">
-
       <span class="novelty-title">
         <router-link
             :to="{ name: 'posts', params: { id: newsItem.id} }"
