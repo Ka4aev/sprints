@@ -12,15 +12,6 @@ export const NewsServices  = {
         return response.data;
     }
 }
-// const refka = ref();
-//
-// const newsIndex = NewsServices.getIndexNews()
-//     .then(data => refka.value = data)
-//     .catch(error => console.log(error));
-//
-//
-// export const post = NewsServices.getNews(8863)
-//     .then(data => refka.value = data)
-//     .catch(error => console.log(error));
+
 
 

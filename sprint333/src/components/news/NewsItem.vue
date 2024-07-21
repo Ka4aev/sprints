@@ -1,27 +1,30 @@
 <script setup>
-
-import {post} from "../../api/NewsServices.js";
-
-defineProps({
+import {NewsServices} from "@/api/newsServices.js"
+import {onMounted, ref, watch} from 'vue';
+const props = defineProps({
   number:{
+    type: Number,
+    required: true
+  },
+  post:{
     type: Number,
     required: true
   }
 });
 
-const newsItem = {
-    by: "dhouston",
-    descendants: 71,
-    id: 8863,
-    kids: [ 8952, 9224, 8917, 8884, 8887, 8943, 8869, 8958, 9005, 9671, 8940, 9067, 8908, 9055, 8865, 8881, 8872, 8873, 8955, 10403, 8903, 8928, 9125, 8998, 8901, 8902, 8907, 8894, 8878, 8870, 8980, 8934, 8876 ],
-    score: 111,
-    time: 1175714200,
-    title: "My YC app: Dropbox - Throw away your USB drive",
-    type: "story",
-    url: "http://www.getdropbox.com/u/2/screencast.html"
+const newsItem = ref()
+
+const getPosts = () => {
+  NewsServices.getNews(props.post)
+      .then(data => newsItem.value = data)
+      .catch(error => console.log(error));
 }
 
-const shortLink = (link) => link.split('/')[2];
+onMounted(() => {
+  getPosts()
+})
+
+const shortLink = (link) => link ? link.split('/')[2] : null;
 
 const newsTime = (time) => {
   let date = new Date(time * 1000)
@@ -41,7 +44,7 @@ const newsTime = (time) => {
 </script>
 
 <template>
-  <article :id=newsItem.id class="novelty">
+  <article class="novelty" v-if="newsItem">
     <span class="number">{{number}}.</span>
     <div class="novelty-top">
       <span class="novelty-title">
