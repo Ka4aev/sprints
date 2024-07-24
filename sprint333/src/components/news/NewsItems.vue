@@ -1,17 +1,28 @@
 <script setup>
 import NewsItem from "@/components/news/NewsItem.vue";
-import {onMounted, ref} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import {NewsServices} from "@/api/newsServices.js";
 
 const posts = ref([]);
 
 const getIndexPosts =  () => {
   NewsServices.getIndexNews()
-      .then(data => posts.value = data)
+      .then(data =>{
+        posts.value = data.slice(0, 100);
+      })
       .catch(error => console.log(error));
 }
+
 onMounted(() => {
-  getIndexPosts()
+  getIndexPosts();
+
+  const intervalId = setInterval(() => {
+    getIndexPosts();
+  }, 60000);
+
+  onUnmounted(() => {
+    clearInterval(intervalId);
+  });
 });
 </script>
 

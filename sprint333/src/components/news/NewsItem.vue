@@ -1,6 +1,8 @@
 <script setup>
-import {NewsServices} from "@/api/newsServices.js"
-import {onMounted, ref, watch} from 'vue';
+import { NewsServices } from "@/api/newsServices.js"
+import {onMounted, onUnmounted, ref} from 'vue';
+import { newsTime,shortLink } from "@/functions.js";
+
 const props = defineProps({
   number:{
     type: Number,
@@ -21,26 +23,9 @@ const getPosts = () => {
 }
 
 onMounted(() => {
-  getPosts()
+  getPosts();
 })
 
-const shortLink = (link) => link ? link.split('/')[2] : null;
-
-const newsTime = (time) => {
-  let date = new Date(time * 1000)
-  let hours = date.getHours()
-  let minutes = date.getMinutes()
-  let seconds = date.getSeconds()
-  if (hours > 0) {
-    return `${hours} hours`
-  }
-  else if (minutes > 0) {
-    return `${minutes} minutes`
-  }
-  else {
-    return `${seconds} seconds`
-  }
-}
 </script>
 
 <template>
