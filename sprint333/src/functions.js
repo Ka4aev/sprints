@@ -1,3 +1,5 @@
+import {onMounted, onUnmounted} from "vue";
+
 export function generateNewsItems(){
     const newsItems = []
 
@@ -27,3 +29,20 @@ export function newsTime(unixTime) {
 export function shortLink(link){
     return link ? link.split('/')[2] : 'no url';
 }
+
+export function intervalId(func){
+    return setInterval(() => {
+        func();
+    },60000)
+}
+
+// export function updateList(func) {
+//     intervalId(() => func())
+//
+//     onMounted(() => {
+//         func();
+//     })
+//     onUnmounted(() => {
+//         clearInterval(intervalId(() => func()));
+//     });
+// }

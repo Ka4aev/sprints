@@ -1,7 +1,8 @@
 <script setup>
 import NewsItem from "@/components/news/NewsItem.vue";
-import {onMounted, onUnmounted, ref} from "vue";
-import {NewsServices} from "@/api/newsServices.js";
+import { onMounted, onUnmounted, ref } from "vue";
+import { NewsServices } from "@/api/newsServices.js";
+import { intervalId } from "@/functions.js";
 
 const posts = ref([]);
 
@@ -13,16 +14,14 @@ const getIndexPosts =  () => {
       .catch(error => console.log(error));
 }
 
+intervalId(() => getIndexPosts())
+
 onMounted(() => {
   getIndexPosts();
+});
 
-  const intervalId = setInterval(() => {
-    getIndexPosts();
-  }, 60000);
-
-  onUnmounted(() => {
-    clearInterval(intervalId);
-  });
+onUnmounted(() => {
+  clearInterval(intervalId(() => getIndexPosts()));
 });
 </script>
 
@@ -33,6 +32,7 @@ onMounted(() => {
     :number="index + 1"
     :key="post"
     :post="post"
+    :intervalId="intervalId"
    />
   </section>
 </template>

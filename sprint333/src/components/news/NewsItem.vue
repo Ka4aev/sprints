@@ -1,7 +1,7 @@
 <script setup>
 import { NewsServices } from "@/api/newsServices.js"
-import {onMounted, onUnmounted, ref} from 'vue';
-import { newsTime,shortLink } from "@/functions.js";
+import { onMounted, onUnmounted, ref } from 'vue';
+import { intervalId, newsTime, shortLink } from "@/functions.js";
 
 const props = defineProps({
   number:{
@@ -22,9 +22,16 @@ const getPosts = () => {
       .catch(error => console.log(error));
 }
 
+intervalId(() => getPosts())
+
 onMounted(() => {
   getPosts();
 })
+
+onUnmounted(() => {
+  clearInterval(intervalId(() => getPosts()));
+});
+
 
 </script>
 

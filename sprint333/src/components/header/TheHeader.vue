@@ -1,6 +1,7 @@
 <script setup>
 import TheLogo from "@/components/header/TheLogo.vue";
 import TheButton from "@/components/header/TheButton.vue";
+
 </script>
 
 <template>
