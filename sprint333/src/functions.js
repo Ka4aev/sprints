@@ -1,13 +1,3 @@
-import {onMounted, onUnmounted} from "vue";
-
-export function generateNewsItems(){
-    const newsItems = []
-
-    for(let novelty  = 0; novelty < 100; novelty++) {
-        newsItems.push({ novelty })
-    }
-    return newsItems;
-}
 
 export function newsTime(unixTime) {
     let currentTime = Math.floor(Date.now() / 1000); // Текущее время в UNIX формате

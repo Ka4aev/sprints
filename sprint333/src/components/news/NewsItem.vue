@@ -75,6 +75,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
+
 .number{
   position: absolute;
   @extend .font-title;
