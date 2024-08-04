@@ -16,20 +16,20 @@ const props = defineProps({
 
 const newsItem = ref()
 
-const getPosts = () => {
+const getPost = () => {
   NewsServices.getNews(props.post)
       .then(data => newsItem.value = data)
       .catch(error => console.log(error));
 }
 
-intervalId(() => getPosts())
+intervalId(() => getPost())
 
 onMounted(() => {
-  getPosts();
+  getPost();
 })
 
 onUnmounted(() => {
-  clearInterval(intervalId(() => getPosts()));
+  clearInterval(intervalId(() => getPost()));
 });
 
 

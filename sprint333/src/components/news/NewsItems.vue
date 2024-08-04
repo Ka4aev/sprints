@@ -32,7 +32,6 @@ onUnmounted(() => {
     :number="index + 1"
     :key="post"
     :post="post"
-    :intervalId="intervalId"
    />
   </section>
 </template>
