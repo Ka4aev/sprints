@@ -9,7 +9,6 @@ const props = defineProps({
     type: Number
   }
 })
-console.log(props.commentId)
 
 const comment = ref()
 const showReplies = ref(false);
@@ -38,12 +37,20 @@ const toggleReplies = () => {
     </div>
     <div class="comment-bottom" v-html="comment.text"></div>
 
-    <button @click="toggleReplies" class="reply-button">
+    <button
+        @click="toggleReplies"
+        v-if="comment.kids"
+        class="reply-button"
+    >
       {{ showReplies ? 'Hide comments' : 'Show comments' }}
     </button>
 
     <div v-if="showReplies">
-      <comment-list  :comment="comment" :comments="comment.kids"/>
+      <post-comment
+          v-for="commentId in comment.kids"
+          :key="commentId"
+          :comment-id="commentId"
+      />
     </div>
 
   </article>

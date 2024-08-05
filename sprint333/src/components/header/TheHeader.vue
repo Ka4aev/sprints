@@ -18,6 +18,10 @@ const emits = defineEmits(['posts-rerender'])
 
 <style lang="scss">
   .header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
     margin-bottom: 20px;
     padding: 10px 0;
     background-color: $orange-color;

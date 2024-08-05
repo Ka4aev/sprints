@@ -1,4 +1,3 @@
-
 export function newsTime(unixTime) {
     let currentTime = Math.floor(Date.now() / 1000); // Текущее время в UNIX формате
     let timeDiff = currentTime - unixTime; // Разница времени в секундах

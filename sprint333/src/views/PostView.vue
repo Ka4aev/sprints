@@ -6,7 +6,6 @@ import {onMounted, onUnmounted, ref} from "vue";
 import PostInfo from "@/components/comment/PostInfo.vue";
 import PostComments from "@/components/comment/PostComments.vue";
 
-
 defineProps({
   componentKey:{
     type: Number,
@@ -15,13 +14,11 @@ defineProps({
 })
 
 const post = ref()
-
 const route = useRoute()
-console.log(route.params.id)
 
 const getPost = () => {
   NewsServices.getNews(route.params.id)
-      .then(data => {post.value = data; console.log(data)})
+      .then(data => post.value = data)
       .catch(error => console.log(error));
 }
 

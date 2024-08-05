@@ -14,9 +14,9 @@ defineProps({
   <div class="comments" v-if="post.kids">
 
     <post-comment
-        v-for="(commentId) in post.kids"
-        :post="post"
+        v-for="commentId in post.kids"
         :comment-id="commentId"
+        :key="commentId"
     />
 
   </div>
