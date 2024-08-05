@@ -6,12 +6,8 @@ import { intervalId } from "@/functions.js";
 
 const posts = ref([]);
 
-const getIndexPosts =  () => {
-  NewsServices.getIndexNews()
-      .then(data =>{
-        posts.value = data.slice(0, 100);
-      })
-      .catch(error => console.log(error));
+const getIndexPosts = async () => {
+  posts.value = (await NewsServices.getIndexNews()).slice(0,100)
 }
 
 intervalId(() => getIndexPosts())

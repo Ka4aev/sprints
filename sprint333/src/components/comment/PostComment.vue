@@ -12,19 +12,17 @@ const props = defineProps({
 const comment = ref()
 const showReplies = ref(false);
 
-const getComment = () => {
-  NewsServices.getNews(props.commentId)
-      .then(data => comment.value = data)
-      .catch(error => console.log(error));
+const getComment = async () => {
+  comment.value = await NewsServices.getNews(props.commentId)
 }
-
-onMounted(() => {
-  getComment();
-})
 
 const toggleReplies = () => {
   showReplies.value = !showReplies.value; // Переключение видимости
 };
+
+onMounted(() => {
+  getComment();
+})
 </script>
 
 <template>

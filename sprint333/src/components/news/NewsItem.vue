@@ -16,10 +16,8 @@ const props = defineProps({
 
 const newsItem = ref()
 
-const getPost = () => {
-  NewsServices.getNews(props.post)
-      .then(data => newsItem.value = data)
-      .catch(error => console.log(error));
+const getPost = async () => {
+  newsItem.value = await NewsServices.getNews(props.post)
 }
 
 intervalId(() => getPost())
