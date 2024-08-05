@@ -2,7 +2,6 @@
 import {newsTime} from "@/functions.js";
 import {onMounted, ref} from "vue";
 import {NewsServices} from "@/api/newsServices.js";
-import CommentList from "@/components/comment/CommentList.vue";
 
 const props = defineProps({
   commentId:{
