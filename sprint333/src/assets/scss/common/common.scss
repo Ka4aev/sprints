@@ -7,11 +7,18 @@ html,body{
   min-height: 100%;
   width: 100%;
   overflow: hidden;
+
 }
 .container{
   max-width: 1440px;
   margin: 0 auto;
   height: 100%;
+  @media screen and (max-width: 1447px) {
+    padding: 0 2em;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 0 0.5em;
+  }
 }
 
 .news{
@@ -24,4 +31,10 @@ html,body{
   padding: 2% 4%;
   background-color: $background-color;
   margin-top: 5.5em;
+
+  @media screen and (max-width: 1447px) {
+    padding: 1em 1em 1em 3em;
+    margin-top: 4.2em ;
+  }
+
 }

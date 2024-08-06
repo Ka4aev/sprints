@@ -63,6 +63,9 @@ a,button:hover{
   font-family: $default-font;
   background: none;
   padding: 3px;
+  @media screen and (max-width: 500px) {
+    font-size: 0.8em;
+  }
 }
 
 .comment{
@@ -79,6 +82,10 @@ a,button:hover{
   &-bottom{
     font-family: $default-font;
     line-height: 1.3;
+
+    @media screen and (max-width: 500px) {
+      font-size: 0.8em;
+    }
   }
 }
 </style>

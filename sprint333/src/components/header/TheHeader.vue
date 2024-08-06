@@ -17,6 +17,7 @@ const emits = defineEmits(['posts-rerender'])
 </template>
 
 <style lang="scss">
+
   .header{
     position: fixed;
     top: 0;

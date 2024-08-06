@@ -95,6 +95,11 @@ onUnmounted(() => {
   &-title{
     @extend .font-title;
     margin-right: 5px;
+
+    @media screen and (max-width: 500px) {
+      margin-right: 3px;
+      font-size: 1.4em;
+    }
   }
 
   a:hover{
@@ -110,6 +115,10 @@ onUnmounted(() => {
     background-color: rgba(224, 112, 30, 0.7);
     width: 100%;
     gap: 5px;
+
+    @media screen and (max-width: 500px) {
+      font-size: 1em;
+    }
   }
 }
 </style>

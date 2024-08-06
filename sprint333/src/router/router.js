@@ -9,5 +9,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
+//todo: сделать пересылку на компонент о сообщении ошибки, если она есть
 
 export default router

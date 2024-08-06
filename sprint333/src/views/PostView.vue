@@ -49,3 +49,11 @@ onUnmounted(() => {
     </section>
   </div>
 </template>
+
+<style scoped lang="scss">
+.news {
+  @media screen and (max-width: 1447px) {
+    padding: 1em;
+  }
+}
+</style>

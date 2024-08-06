@@ -15,8 +15,7 @@ defineProps({
 
     <span class="novelty-link">
           <a :href=post.url target="_blank">( {{ shortLink(post.url) }} )</a>
-        </span>
-
+    </span>
   </div>
 
   <div class="novelty-bottom">
@@ -61,6 +60,26 @@ a:hover{
   }
   .author{
     margin-right: 5px;
+  }
+  &-top{
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (max-width: 500px) {
+    &-top{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    &-title{
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+    &-link {
+      font-size: 0.8em;
+    }
+    &-bottom{
+      font-size: 0.8em;
+    }
   }
 }
 </style>
