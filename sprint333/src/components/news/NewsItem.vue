@@ -62,7 +62,7 @@ onUnmounted(() => {
       |
        <router-link
            :to="{ name: 'posts', params: { id: newsItem.id} }"
-           class="comments" href="/"
+           class="comments"
        >
          {{newsItem.descendants}}
          <span v-if="newsItem.descendants === 1">comment</span>
